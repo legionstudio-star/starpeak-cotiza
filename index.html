@@ -409,6 +409,8 @@ window.SPE = {
   group('solOpts','solucion',b=>{data.k=b.dataset.k;window.stage.show(data.k);});
   group('billOpts','factura',b=>{data.mid=+b.dataset.mid||0;});
   group('timeOpts','plazo');
+  /* preselección desde el anuncio: ?sol=carro | hogar | empresa | respaldo */
+  {const pre=qs.get('sol');const pb=pre&&$('solOpts').querySelector('.opt[data-k="'+pre.replace(/[^a-z]/g,'')+'"]');if(pb) setTimeout(()=>{if(!data.solucion) pb.click();},350);}
 
   /* ciudades */
   const wrap=$('cities');
