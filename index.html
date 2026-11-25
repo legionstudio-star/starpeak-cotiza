@@ -389,6 +389,8 @@ window.SPE = {
   /* atribución de anuncios */
   const qs=new URLSearchParams(location.search),tracking={};
   ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","gclid"].forEach(k=>{if(qs.get(k)) tracking[k]=qs.get(k);});
+  /* trafico de pauta: todo al formulario, sin salida a WhatsApp antes de enviar */
+  if(tracking.utm_source==='meta'||tracking.fbclid){const c=document.querySelector('a.call');if(c)c.remove();}
 
   /* Meta Pixel */
   if(cfg.pixelId){
